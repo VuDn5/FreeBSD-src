@@ -1650,7 +1650,11 @@ vm_phys_find_queues_contig(
 	if (order < VM_NFREEORDER)
 		return (NULL);
 	/* Search for a long-enough sequence of max-order blocks. */
+<<<<<<< HEAD
 	for (pind = vm_default_freepool; pind < VM_NFREEPOOL; pind++) {
+=======
+	for (pind = 0; pind < VM_NFREEPOOL; pind++) {
+>>>>>>> 8d2b56da39cec2f5241b41f35fd70b125ace1c0a
 		fl = (*queues)[pind];
 		m_ret = vm_phys_find_freelist_contig(fl, npages,
 		    low, high, alignment, boundary);

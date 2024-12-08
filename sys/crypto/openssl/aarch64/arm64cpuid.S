@@ -68,7 +68,10 @@ _armv8_sha512_probe:
 .globl	_armv8_cpuid_probe
 .type	_armv8_cpuid_probe,%function
 _armv8_cpuid_probe:
+<<<<<<< HEAD
 	AARCH64_VALID_CALL_TARGET
+=======
+>>>>>>> 8d2b56da39cec2f5241b41f35fd70b125ace1c0a
 	mrs	x0, midr_el1
 	ret
 .size	_armv8_cpuid_probe,.-_armv8_cpuid_probe

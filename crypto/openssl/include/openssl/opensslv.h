@@ -29,7 +29,11 @@ extern "C" {
  */
 # define OPENSSL_VERSION_MAJOR  3
 # define OPENSSL_VERSION_MINOR  0
+<<<<<<< HEAD
 # define OPENSSL_VERSION_PATCH  15
+=======
+# define OPENSSL_VERSION_PATCH  12
+>>>>>>> 8d2b56da39cec2f5241b41f35fd70b125ace1c0a
 
 /*
  * Additional version information
@@ -74,21 +78,34 @@ extern "C" {
  * longer variant with OPENSSL_VERSION_PRE_RELEASE_STR and
  * OPENSSL_VERSION_BUILD_METADATA_STR appended.
  */
+<<<<<<< HEAD
 # define OPENSSL_VERSION_STR "3.0.15"
 # define OPENSSL_FULL_VERSION_STR "3.0.15"
+=======
+# define OPENSSL_VERSION_STR "3.0.12"
+# define OPENSSL_FULL_VERSION_STR "3.0.12"
+>>>>>>> 8d2b56da39cec2f5241b41f35fd70b125ace1c0a
 
 /*
  * SECTION 3: ADDITIONAL METADATA
  *
  * These strings are defined separately to allow them to be parsable.
  */
+<<<<<<< HEAD
 # define OPENSSL_RELEASE_DATE "3 Sep 2024"
+=======
+# define OPENSSL_RELEASE_DATE "24 Oct 2023"
+>>>>>>> 8d2b56da39cec2f5241b41f35fd70b125ace1c0a
 
 /*
  * SECTION 4: BACKWARD COMPATIBILITY
  */
 
+<<<<<<< HEAD
 # define OPENSSL_VERSION_TEXT "OpenSSL 3.0.15 3 Sep 2024"
+=======
+# define OPENSSL_VERSION_TEXT "OpenSSL 3.0.12 24 Oct 2023"
+>>>>>>> 8d2b56da39cec2f5241b41f35fd70b125ace1c0a
 
 /* Synthesize OPENSSL_VERSION_NUMBER with the layout 0xMNN00PPSL */
 # ifdef OPENSSL_VERSION_PRE_RELEASE

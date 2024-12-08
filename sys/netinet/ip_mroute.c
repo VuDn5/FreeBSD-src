@@ -718,7 +718,10 @@ ip_mrouter_init(struct socket *so, int version)
 	    HASH_NOWAIT);
 	if (V_mfchashtbl == NULL) {
 		MRW_WUNLOCK();
+<<<<<<< HEAD
 		MRW_TEARDOWN_WUNLOCK();
+=======
+>>>>>>> 8d2b56da39cec2f5241b41f35fd70b125ace1c0a
 		return (ENOMEM);
 	}
 

@@ -2072,8 +2072,15 @@ zfs_vnodes_adjust_back(void)
 #endif
 }
 
+<<<<<<< HEAD
 static struct sx zfs_vnlru_lock;
 static struct vnode *zfs_vnlru_marker;
+=======
+#if __FreeBSD_version >= 1300139
+static struct sx zfs_vnlru_lock;
+static struct vnode *zfs_vnlru_marker;
+#endif
+>>>>>>> 8d2b56da39cec2f5241b41f35fd70b125ace1c0a
 static arc_prune_t *zfs_prune;
 
 static void
@@ -2081,9 +2088,19 @@ zfs_prune_task(uint64_t nr_to_scan, void *arg __unused)
 {
 	if (nr_to_scan > INT_MAX)
 		nr_to_scan = INT_MAX;
+<<<<<<< HEAD
 	sx_xlock(&zfs_vnlru_lock);
 	vnlru_free_vfsops(nr_to_scan, &zfs_vfsops, zfs_vnlru_marker);
 	sx_xunlock(&zfs_vnlru_lock);
+=======
+#if __FreeBSD_version >= 1300139
+	sx_xlock(&zfs_vnlru_lock);
+	vnlru_free_vfsops(nr_to_scan, &zfs_vfsops, zfs_vnlru_marker);
+	sx_xunlock(&zfs_vnlru_lock);
+#else
+	vnlru_free(nr_to_scan, &zfs_vfsops);
+#endif
+>>>>>>> 8d2b56da39cec2f5241b41f35fd70b125ace1c0a
 }
 
 void
@@ -2113,8 +2130,15 @@ zfs_init(void)
 
 	zfsvfs_taskq = taskq_create("zfsvfs", 1, minclsyspri, 0, 0, 0);
 
+<<<<<<< HEAD
 	zfs_vnlru_marker = vnlru_alloc_marker();
 	sx_init(&zfs_vnlru_lock, "zfs vnlru lock");
+=======
+#if __FreeBSD_version >= 1300139
+	zfs_vnlru_marker = vnlru_alloc_marker();
+	sx_init(&zfs_vnlru_lock, "zfs vnlru lock");
+#endif
+>>>>>>> 8d2b56da39cec2f5241b41f35fd70b125ace1c0a
 	zfs_prune = arc_add_prune_callback(zfs_prune_task, NULL);
 }
 
@@ -2122,8 +2146,15 @@ void
 zfs_fini(void)
 {
 	arc_remove_prune_callback(zfs_prune);
+<<<<<<< HEAD
 	vnlru_free_marker(zfs_vnlru_marker);
 	sx_destroy(&zfs_vnlru_lock);
+=======
+#if __FreeBSD_version >= 1300139
+	vnlru_free_marker(zfs_vnlru_marker);
+	sx_destroy(&zfs_vnlru_lock);
+#endif
+>>>>>>> 8d2b56da39cec2f5241b41f35fd70b125ace1c0a
 
 	taskq_destroy(zfsvfs_taskq);
 	zfsctl_fini();

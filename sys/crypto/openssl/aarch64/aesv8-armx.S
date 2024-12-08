@@ -289,7 +289,10 @@ aes_v8_decrypt:
 .type	aes_v8_ecb_encrypt,%function
 .align	5
 aes_v8_ecb_encrypt:
+<<<<<<< HEAD
 	AARCH64_VALID_CALL_TARGET
+=======
+>>>>>>> 8d2b56da39cec2f5241b41f35fd70b125ace1c0a
 	subs	x2,x2,#16
 	// Original input data size bigger than 16, jump to big size processing.
 	b.ne	.Lecb_big_size
@@ -1036,8 +1039,11 @@ aes_v8_ecb_encrypt:
 .type	aes_v8_cbc_encrypt,%function
 .align	5
 aes_v8_cbc_encrypt:
+<<<<<<< HEAD
 	AARCH64_VALID_CALL_TARGET
 	// Armv8.3-A PAuth: even though x30 is pushed to stack it is not popped later.
+=======
+>>>>>>> 8d2b56da39cec2f5241b41f35fd70b125ace1c0a
 	stp	x29,x30,[sp,#-16]!
 	add	x29,sp,#0
 	subs	x2,x2,#16
@@ -1513,8 +1519,11 @@ aes_v8_cbc_encrypt:
 .type	aes_v8_ctr32_encrypt_blocks,%function
 .align	5
 aes_v8_ctr32_encrypt_blocks:
+<<<<<<< HEAD
 	AARCH64_VALID_CALL_TARGET
 	// Armv8.3-A PAuth: even though x30 is pushed to stack it is not popped later.
+=======
+>>>>>>> 8d2b56da39cec2f5241b41f35fd70b125ace1c0a
 	stp	x29,x30,[sp,#-16]!
 	add	x29,sp,#0
 	ldr	w5,[x3,#240]
@@ -1864,7 +1873,10 @@ aes_v8_ctr32_encrypt_blocks:
 .type	aes_v8_xts_encrypt,%function
 .align	5
 aes_v8_xts_encrypt:
+<<<<<<< HEAD
 	AARCH64_VALID_CALL_TARGET
+=======
+>>>>>>> 8d2b56da39cec2f5241b41f35fd70b125ace1c0a
 	cmp	x2,#16
 	// Original input data size bigger than 16, jump to big size processing.
 	b.ne	.Lxts_enc_big_size
@@ -2506,7 +2518,10 @@ aes_v8_xts_encrypt:
 .type	aes_v8_xts_decrypt,%function
 .align	5
 aes_v8_xts_decrypt:
+<<<<<<< HEAD
 	AARCH64_VALID_CALL_TARGET
+=======
+>>>>>>> 8d2b56da39cec2f5241b41f35fd70b125ace1c0a
 	cmp	x2,#16
 	// Original input data size bigger than 16, jump to big size processing.
 	b.ne	.Lxts_dec_big_size

@@ -2839,9 +2839,16 @@ dmu_buf_will_clone_or_dio(dmu_buf_t *db_fake, dmu_tx_t *tx)
 	 * hold on the db, so it should never be evicted after calling
 	 * dbuf_undirty().
 	 */
+<<<<<<< HEAD
 	VERIFY3B(dbuf_undirty(db, tx), ==, B_FALSE);
 	ASSERT0P(dbuf_find_dirty_eq(db, tx->tx_txg));
 
+=======
+	mutex_enter(&db->db_mtx);
+	DBUF_VERIFY(db);
+	VERIFY(!dbuf_undirty(db, tx));
+	ASSERT(list_head(&db->db_dirty_records) == NULL);
+>>>>>>> 8d2b56da39cec2f5241b41f35fd70b125ace1c0a
 	if (db->db_buf != NULL) {
 		/*
 		 * If there is an associated ARC buffer with this dbuf we can
@@ -2861,12 +2868,17 @@ dmu_buf_will_clone_or_dio(dmu_buf_t *db_fake, dmu_tx_t *tx)
 		dbuf_clear_data(db);
 	}
 
+<<<<<<< HEAD
 	ASSERT3P(db->db_buf, ==, NULL);
 	ASSERT3P(db->db.db_data, ==, NULL);
 
 	db->db_state = DB_NOFILL;
 	DTRACE_SET_STATE(db,
 	    "allocating NOFILL buffer for clone or direct I/O write");
+=======
+	db->db_state = DB_NOFILL;
+	DTRACE_SET_STATE(db, "allocating NOFILL buffer for clone");
+>>>>>>> 8d2b56da39cec2f5241b41f35fd70b125ace1c0a
 
 	DBUF_VERIFY(db);
 	mutex_exit(&db->db_mtx);

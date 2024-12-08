@@ -51,12 +51,19 @@
 #    define pthread_getattr_np pthread_attr_get_np
 // The MAP_NORESERVE define has been removed in FreeBSD 11.x, and even before
 // that, it was never implemented. So just define it to zero.
+<<<<<<< HEAD
 #    undef MAP_NORESERVE
 #    define MAP_NORESERVE 0
 extern const Elf_Auxinfo *__elf_aux_vector __attribute__ ((weak));
 extern "C" int __sys_sigaction(int signum, const struct sigaction *act,
                                struct sigaction *oldact);
 #  endif
+=======
+#undef MAP_NORESERVE
+#define MAP_NORESERVE 0
+extern const Elf_Auxinfo *__elf_aux_vector;
+#endif
+>>>>>>> 8d2b56da39cec2f5241b41f35fd70b125ace1c0a
 
 #  if SANITIZER_NETBSD
 #    include <lwp.h>
@@ -959,7 +966,11 @@ u64 MonotonicNanoTime() {
 void ReExec() {
   const char *pathname = "/proc/self/exe";
 
+<<<<<<< HEAD
 #  if SANITIZER_FREEBSD
+=======
+#if SANITIZER_FREEBSD
+>>>>>>> 8d2b56da39cec2f5241b41f35fd70b125ace1c0a
   for (const auto *aux = __elf_aux_vector; aux->a_type != AT_NULL; aux++) {
     if (aux->a_type == AT_EXECPATH) {
       pathname = static_cast<const char *>(aux->a_un.a_ptr);

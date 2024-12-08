@@ -454,6 +454,51 @@ arc_unregister_hotplug(void)
 	unregister_memory_notifier(&arc_hotplug_callback_mem_nb);
 #endif
 }
+<<<<<<< HEAD
+=======
+#else /* _KERNEL */
+int64_t
+arc_available_memory(void)
+{
+	int64_t lowest = INT64_MAX;
+
+	/* Every 100 calls, free a small amount */
+	if (random_in_range(100) == 0)
+		lowest = -1024;
+
+	return (lowest);
+}
+
+int
+arc_memory_throttle(spa_t *spa, uint64_t reserve, uint64_t txg)
+{
+	(void) spa, (void) reserve, (void) txg;
+	return (0);
+}
+
+uint64_t
+arc_all_memory(void)
+{
+	return (ptob(physmem) / 2);
+}
+
+uint64_t
+arc_free_memory(void)
+{
+	return (random_in_range(arc_all_memory() * 20 / 100));
+}
+
+void
+arc_register_hotplug(void)
+{
+}
+
+void
+arc_unregister_hotplug(void)
+{
+}
+#endif /* _KERNEL */
+>>>>>>> 8d2b56da39cec2f5241b41f35fd70b125ace1c0a
 
 ZFS_MODULE_PARAM(zfs_arc, zfs_arc_, shrinker_limit, INT, ZMOD_RW,
 	"Limit on number of pages that ARC shrinker can reclaim at once");

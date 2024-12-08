@@ -6173,7 +6173,11 @@ arc_prune_task(void *ptr)
 	if (func != NULL)
 		func(ap->p_adjust, ap->p_private);
 
+<<<<<<< HEAD
 	(void) zfs_refcount_remove(&ap->p_refcnt, func);
+=======
+	zfs_refcount_remove(&ap->p_refcnt, func);
+>>>>>>> 8d2b56da39cec2f5241b41f35fd70b125ace1c0a
 }
 
 /*
@@ -6202,7 +6206,11 @@ arc_prune_async(uint64_t adjust)
 		ap->p_adjust = adjust;
 		if (taskq_dispatch(arc_prune_taskq, arc_prune_task,
 		    ap, TQ_SLEEP) == TASKQID_INVALID) {
+<<<<<<< HEAD
 			(void) zfs_refcount_remove(&ap->p_refcnt, ap->p_pfunc);
+=======
+			zfs_refcount_remove(&ap->p_refcnt, ap->p_pfunc);
+>>>>>>> 8d2b56da39cec2f5241b41f35fd70b125ace1c0a
 			continue;
 		}
 		ARCSTAT_BUMP(arcstat_prune);

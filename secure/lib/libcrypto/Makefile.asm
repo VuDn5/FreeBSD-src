@@ -46,7 +46,11 @@ ASM=	${SRCS:R:S/$/.S/} sha256-armv8.S
 
 all:	${ASM}
 	rm -f ${ASM:R:S/$/.s/}
+<<<<<<< HEAD
 	${CP} ${LCRYPTO_SRC}/crypto/arm_arch.h ../arm_arch.h
+=======
+	${CP} ${LCRYPTO_SRC}/crypto/arm_arch.h arm_arch.h
+>>>>>>> 8d2b56da39cec2f5241b41f35fd70b125ace1c0a
 
 CLEANFILES=	${ASM}
 .SUFFIXES:	.pl
@@ -186,7 +190,10 @@ ASM=	${SRCS:R:S/$/.S/}
 
 all:	${ASM}
 	rm -f ${ASM:R:S/$/.s/}	
+<<<<<<< HEAD
 	${CP} ${LCRYPTO_SRC}/crypto/arm_arch.h ../arm_arch.h
+=======
+>>>>>>> 8d2b56da39cec2f5241b41f35fd70b125ace1c0a
 
 CLEANFILES=	${ASM}
 .SUFFIXES:	.pl
